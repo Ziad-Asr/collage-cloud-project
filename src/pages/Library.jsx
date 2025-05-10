@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { getUserLibrary, removeBookFromLibrary } from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Library as LibraryIcon, Trash2, Book } from "lucide-react";
+import axios from "axios";
 
 export default function Library() {
   const [books, setBooks] = useState([]);
@@ -32,7 +33,6 @@ export default function Library() {
   const handleRemoveBook = async (bookId) => {
     try {
       await removeBookFromLibrary(bookId);
-      // Update the books state after successful removal
       setBooks(books.filter((book) => book.id !== bookId));
     } catch (err) {
       console.error("Error removing book:", err);
@@ -50,9 +50,25 @@ export default function Library() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center mb-8">
-        <LibraryIcon size={28} className="text-indigo-700 mr-3" />
-        <h1 className="text-3xl font-bold text-gray-900">My Library</h1>
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center">
+          <LibraryIcon size={28} className="text-indigo-700 mr-3" />
+          <h1 className="text-3xl font-bold text-gray-900">My Library</h1>
+        </div>
+        <div className="flex space-x-4">
+          <Link
+            to="/recommendations"
+            className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
+          >
+            View Recommendations
+          </Link>
+          <Link
+            to="/books"
+            className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition"
+          >
+            Explore Books
+          </Link>
+        </div>
       </div>
 
       {error && (

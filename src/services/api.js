@@ -52,9 +52,8 @@ export const addBookToLibrary = async (bookId) => {
 };
 
 export const removeBookFromLibrary = async (bookId) => {
-  return api.delete("/api/UserLibrary/delete/Book", { data: { bookId } });
+  return api.delete(`/api/UserLibrary/delete/Book?bookId=${bookId}`);
 };
-
 // Book Club Services
 export const createBookClub = async (clubData) => {
   return api.post("/api/Bookclub", clubData);

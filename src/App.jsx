@@ -14,6 +14,7 @@ import Books from "./pages/Books";
 import BookDetail from "./pages/BookDetail";
 import BookClubs from "./pages/BookClubs";
 import BookClubDetail from "./pages/BookClubDetail";
+import Recommendations from "./pages/Recommendations";
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
               <Route path="/book/:id" element={<BookDetail />} />
               <Route path="/book-clubs" element={<BookClubs />} />
               <Route path="/book-club/:id" element={<BookClubDetail />} />
+              <Route path="/book-club/:id/discussion" element={<BookClubDetail />} />
+
+
+              <Route path="/recommendations" element={<Recommendations />} />
             </Route>
           </Route>
         </Routes>

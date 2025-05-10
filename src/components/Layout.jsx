@@ -171,6 +171,18 @@ export default function Layout() {
                   <Users size={20} />
                   <span>Book Clubs</span>
                 </NavLink>
+                 <NavLink
+                  to="/Recommendations"
+                  className={({ isActive }) =>
+                    `flex items-center space-x-2 p-2 rounded-lg ${
+                      isActive ? "bg-indigo-800" : "hover:bg-indigo-600"
+                    }`
+                  }
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Users size={20} />
+                  <span>Recommendations</span>
+                </NavLink>
                 <button
                   onClick={() => {
                     handleLogout();
